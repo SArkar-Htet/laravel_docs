@@ -3,8 +3,8 @@
   * [Redirect Routes](#redirect-routes)
   * [View Routes](#view-routes)
 
-* <a href="#parameters">**Route Parameters**</a>
-  * <a href="#required">Required Parameters</a><br/>
+* [**Route Parameters**](#route-parameters)
+  * [Required Parameters](#required-parameters)
   * <a href="#optional">Optional Parameters</a><br/>
   * <a href="#regconstraints">Regular Expression Constraints</a>
 
@@ -89,5 +89,24 @@ HTML formတိုင်းတွင် CSRF token field တစ်ခုပါ�
     Route::view('/welcome', 'welcome');
 
  ထို့အပြင် viewဆီသို့ optional third argumentအဖြစ်ဖြင့် dataပို့နိုင်ပါသည်။
- 
+
     Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
+
+<a name="route-parameters"></a>
+## Route Parameters
+<a name="required-parameters"></a>
+### Required Parameters
+
+တစ်ခါတစ်လေမှာ မင်းရဲ့routeထဲမှာ URIရဲ့ အစိတ်အပိုင်းတွေကို ဖမ်းယူရန်လိုလာလိမ့်မည်။ ဥပမာ URIထဲက user idကို မင်းကဖမ်းဖို့လိုလာတယ်။ ဒါကို route parameterသတ်မှတ်ခြင်းအားဖြင့် လုပ်နိုင်ပါသည်။
+
+    Route::get('user/{id}', function ($id) {
+        return 'User '.$id;
+    });
+
+သင့်route၏ လိုအပ်ချက်အလိုက် route parameterတွေကို အများကြီသတ်မှတ်နိုင်ပါတယ်။
+
+    Route::get('posts/{post}/comments/{comment}', function ($postId, $commentId) {
+        //
+    });
+
+Route parametersတွေသည် အမြဲတမ်း `{}` ထဲမှာ ပိတ်ထားပြီးတော့ alphabetic charactersတွေဘဲဖြစ်သင့်ပါတယ်။ `-`မသုံးရပါဘူး။ `-`အစား underscore( `_` )သုံးလို့ရပါတယ်။

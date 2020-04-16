@@ -35,12 +35,12 @@
 Routeဆိုတာ ကိုယ့်websiteရဲ့ ဘယ်လမ်းကြောင်းကိုသွားမယ် ဘယ်pageကိုသွားမယ်ဆိုတာ ညွှန်းပေးတဲ့အရာဖြစ်ပါတယ်
 ။
 #### The Default Route Files
-Route filesအားလုံးသည် routesဆိုတဲ့ directoryထဲမှာ ရှိကြပါသည်။ web interfaceအတွက် routes/web.php ဆိုတဲ့ fileထဲမှာ ရေးကြပါသည်။ apiအတွက်တော့ routes/api.phpဆိုတဲ့ fileထဲမှာ ရေးကြရမှာပါ။ routeကို applicationအများစုမှာ routes/web.phpမှာ ရေးကြတာများပါတယ်။ 
+Route filesအားလုံးက `routes`ဆိုတဲ့ directoryထဲမှာ ရှိကြပါတယ်။ web interfaceအတွက် `routes/web.php` ဆိုတဲ့ fileထဲမှာ ရေးကြပါတယ်။ apiအတွက်တော့ `routes/api.php`ဆိုတဲ့ fileထဲမှာ ရေးကြရမှာပါ။ web applicationအများစုမှာ routeကို `routes/web.php`မှာ ရေးကြတာများပါတယ်။ 
 
-routes/api.php fileထဲမှာရှိတဲ့ routeတွေသည် /api URI prefixကို အလိုအလျောက်ကြေငြာထားခဲ့တဲ့အတွက် သင့်အနေနဲ့ ဒီဖိုင်ထဲမှာရှိတဲ့ routeတိုင်းကို တစ်ဆင့်ချင်းကြေငြာနေစရာမလိုပါ။ RouteServiceProvider classကို modifyလုပ်ချင်းအားဖြင့် သင့်အနေနဲ့ prefixနှင့် အခြားroute group option တွေကို modifyလုပ်နိုင်မှာ ဖြစ်ပါတယ်။
+`routes/api.php` fileထဲမှာရှိတဲ့ routeတွေသည် `/api` URI prefixကို အလိုအလျောက်ကြေငြာထားခဲ့တဲ့အတွက် သင့်အနေနဲ့ ဒီဖိုင်ထဲမှာရှိတဲ့ routeတိုင်းကို တစ်ဆင့်ချင်းကြေငြာနေစရာမလိုပါဘူး။ `RouteServiceProvider` classကို modifyလုပ်ချင်းအားဖြင့် သင့်အနေနဲ့ prefixနှင့် အခြားroute group option တွေကို modifyလုပ်နိုင်မှာ ဖြစ်ပါတယ်။
 
 #### Available Router Methods
-The router allows you to register routes that respond to any HTTP verb:
+Routeတွေမှာအသုံးပြုတဲ HTTP verbတွေကို ဖော်ပြလိုက်ပါတယ်။
 
     Route::get($uri, $callback);
     Route::post($uri, $callback);
@@ -49,7 +49,7 @@ The router allows you to register routes that respond to any HTTP verb:
     Route::delete($uri, $callback);
     Route::options($uri, $callback);
 
-သင်ဟာ HTTP verb နှစ်ခုလောက်ကို respondလုပ်နိုင်တဲ့ routeတစ်ခုကို သတ်မှတ်ရန်လိုလာတဲ့ အခါမှာ `match` methodကို သုံးနိုင်ပါတယ်။ ဒါမှမဟုတ် HTTP verbအားလုံးကို respondလုပ်လိုတဲ့ အခါဆိုရင်တော့ `any` methodကို သုံးနိုင်ပါတယ်။
+သင်ဟာ HTTP verb နှစ်ခုလောက်ကို respondလုပ်နိုင်တဲ့ routeတစ်ခုကို သတ်မှတ်ဖို့လိုလာတဲ့ အခါမှာ `match` methodကို သုံးနိုင်ပါတယ်။ ဒါမှမဟုတ် HTTP verbအားလုံးကို respondလုပ်လိုတဲ့ အခါဆိုရင်တော့ `any` methodကို သုံးနိုင်ပါတယ်။
 
     Route::match(['get', 'post'], '/', function () {
       //
@@ -60,7 +60,7 @@ The router allows you to register routes that respond to any HTTP verb:
     });
 
 #### CSRF Protection
-HTML formတိုင်းတွင် CSRF token field တစ်ခုပါဝင်သင့်ပါသည်။ မဟုတ်ရင် ဒီform requestက ပယ်ချချင်းခံရမှာပါ။ 
+HTML formတိုင်းမှာ CSRF token field တစ်ခုပါဝင်သင့်ပါသည်။ မဟုတ်ရင် ဒီform requestက ပယ်ချချင်းခံရမှာပါ။ 
 
     <form method="POST" action="/profile">
         @csrf
@@ -69,11 +69,11 @@ HTML formတိုင်းတွင် CSRF token field တစ်ခုပါ�
 
 <a name="redirect-routes"></a>
 ### Redirect Routes
-`Route::redirect` methodသည် redirectဆိုသည့်အတိုင်း ပထမparameterက URIကို ခေါ်လိုက်သည်နှင့် ဒုတိယparameterမှာရှိတဲ့ URIကို ရောက်ရှိသွားမှာ ဖြစ်ပါတယ်။ ဒီmethodသည် full routeတစ်ကြောင်းရေးပေးစရာမလိုသလို controller functon တစ်ခုလည်းရေးပေးစရာမလိုပါ။
+`Route::redirect` methodက redirectဆိုသည့်အတိုင်း ပထမparameterက URIကို ခေါ်လိုက်တာနဲ့ ဒုတိယparameterမှာရှိတဲ့ URIကို ရောက်ရှိသွားမှာ ဖြစ်ပါတယ်။ ဒီmethodသည် full routeတစ်ကြောင်းရေးပေးစရာမလိုသလို controller functon တစ်ခုလည်းရေးပေးစရာမလိုပါဘူး။
 
     Route::redirect('/here', '/there');
 
-`Route::redirect`သည် ယေဘုယျအားဖြင့် `302` status codeတစ်ခုကို return ပြန်ပေးပါသည်။ သင်သည် ဒီstatus codeကို third parameterထည့်ပြီး စိတ်ကြိုက်ပြင်ဆင်နိုင်ပါတယ်။
+`Route::redirect`သည် ယေဘုယျအားဖြင့် `302` status codeတစ်ခုကို return ပြန်ပေးပါတယ်။ သင်အနေနဲ့ ဒီstatus codeကို third parameterထည့်ပြီး စိတ်ကြိုက်ပြင်ဆင်နိုင်ပါတယ်။
 
     Route::redirect('/here', '/there', 301);
 
@@ -84,7 +84,7 @@ HTML formတိုင်းတွင် CSRF token field တစ်ခုပါ�
 <a name="view-routes"></a>
 ### View Routes
 
-သင်ရဲ့routeသည် viewကိုဘဲ returnပြန်ရန်လိုအပ်သည်ဆိုလျှင် `Route::view` methodကို သုံးနိုင်ပါသည်။ ပထမargumentက URIဖြစ်ပြီး ဒုတိယargumentက view fileရဲ့ nameဖြစ်ပါသည်။
+သင့်ရဲ့routeက viewကိုဘဲ returnပြန်ရန်လိုအပ်တယ်ဆိုပါစို့။ ဒါဆိုရင် `Route::view` methodကို သုံးနိုင်ပါတယ်။ ပထမargumentက URIဖြစ်ပြီး ဒုတိယargumentက view fileရဲ့ nameဖြစ်ပါတယ်။
 
     Route::view('/welcome', 'welcome');
 

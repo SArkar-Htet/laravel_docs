@@ -88,7 +88,7 @@ HTML formတိုင်းမှာ CSRF token field တစ်ခုပါဝ�
 
     Route::view('/welcome', 'welcome');
 
- ထို့အပြင် viewဆီသို့ optional third argumentအဖြစ်ဖြင့် dataပို့နိုင်ပါသည်။
+ viewဆီကို dataထည့်ပေးလိုက်ဖို့ optional third argumentကို သုံးနိုင်ပါတယ်။
 
     Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
 
@@ -97,16 +97,33 @@ HTML formတိုင်းမှာ CSRF token field တစ်ခုပါဝ�
 <a name="required-parameters"></a>
 ### Required Parameters
 
-တစ်ခါတစ်လေမှာ မင်းရဲ့routeထဲမှာ URIရဲ့ အစိတ်အပိုင်းတွေကို ဖမ်းယူရန်လိုလာလိမ့်မည်။ ဥပမာ URIထဲက user idကို မင်းကဖမ်းဖို့လိုလာတယ်။ ဒါကို route parameterသတ်မှတ်ခြင်းအားဖြင့် လုပ်နိုင်ပါသည်။
+တစ်ခါတစ်လေမှာ မင်းရဲ့routeထဲမှာ URIရဲ့ အစိတ်အပိုင်းတွေကို ဖမ်းယူရန်လိုလာလိမ့်မယ်။ ဥပမာ URIထဲက user idကို မင်းကဖမ်းဖို့လိုလာတယ်။ ဒါကို route parameterသတ်မှတ်ပေးပြီး လုပ်နိုင်ပါတယ်။
 
     Route::get('user/{id}', function ($id) {
         return 'User '.$id;
     });
 
-သင့်route၏ လိုအပ်ချက်အလိုက် route parameterတွေကို အများကြီသတ်မှတ်နိုင်ပါတယ်။
+အပေါ်က ဥပမာကိုကြည့်ပါ။ `{id}`ဆိုတာ route parameterပါ။ Browserရဲ့ URI barမှာ `user/1` ဒီလို မျိုးတွေ့ရရင် parameter `{id}`က `1` ကိုရည်ညွှန်းတာဖြစ်ပါတယ်။ function ထဲမှာရှိတဲ့ခ`$id` ဆိုတာက အဲဒီ route parameter `{id}` ကိုလှမ်းဖမ်းထားတာပါ။
+
+မင်းရဲ့ routeမှာ လိုအပ်လာရင် route parameterတွေကို အများကြီသတ်မှတ်နိုင်ပါတယ်။
 
     Route::get('posts/{post}/comments/{comment}', function ($postId, $commentId) {
         //
     });
 
-Route parametersတွေသည် အမြဲတမ်း `{}` ထဲမှာ ပိတ်ထားပြီးတော့ alphabetic charactersတွေဘဲဖြစ်သင့်ပါတယ်။ `-`မသုံးရပါဘူး။ `-`အစား underscore( `_` )သုံးလို့ရပါတယ်။
+Route parametersတွေကို အမြဲတမ်း `{}` ထဲမှာ ပိတ်ထားပြီးတော့ alphabetic charactersတွေဘဲဖြစ်သင့်ပါတယ်။ `-`မသုံးရပါဘူး။ `-`အစား underscore( `_` )သုံးလို့ရပါတယ်။
+
+<a name="required-parameters"></a>
+### Optional Parameters
+
+ဒီoptional parameterကတော့ optionalဆိုတဲ့အတိုင်း route parameterက ပါသည်ဖြစ်စေမပါသည်ဖြစ်စေ အလုပ်လုပ်မှာဖြစ်ပါတယ်။ parameter nameနောက်မှာ `?` ထည့်ပေးပြီး optional parameterအဖြစ် သတ်မှတ်ရပါတယ်။ optional parameterသုံးပြီဆိုရင် သူ့ကို default valueပေးကို ပေးရပါတယ်။
+
+    Route::get('user/{name?}', function ($name = null) {
+        return $name;
+    });
+
+    Route::get('user/{name?}', function ($name = 'John') {
+        return $name;
+    });
+
+`{name?}` ဆိုတာ optional parameterဖြစ်ပြီးတော့ functionထဲမှာ default valueပေးထားတာကို တွေ့နိုင်ပါတယ်။

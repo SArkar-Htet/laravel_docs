@@ -5,7 +5,7 @@
 
 * [**Route Parameters**](#route-parameters)
   * [Required Parameters](#required-parameters)
-  * <a href="#optional">Optional Parameters</a><br/>
+  * [Optional Parameters](#optional-parameters)
   * <a href="#regconstraints">Regular Expression Constraints</a>
 
 * <a href="#parameter">**Named Routes**</a>
@@ -116,7 +116,7 @@ Route parametersတွေကို အမြဲတမ်း `{}` ထဲမှာ
 <a name="required-parameters"></a>
 ### Optional Parameters
 
-ဒီoptional parameterကတော့ optionalဆိုတဲ့အတိုင်း route parameterက ပါသည်ဖြစ်စေမပါသည်ဖြစ်စေ အလုပ်လုပ်မှာဖြစ်ပါတယ်။ parameter nameနောက်မှာ `?` ထည့်ပေးပြီး optional parameterအဖြစ် သတ်မှတ်ရပါတယ်။ optional parameterသုံးပြီဆိုရင် သူ့ကို default valueပေးကို ပေးရပါတယ်။
+ဒီoptional parameterကတော့ optionalဆိုတဲ့အတိုင်း route parameterက optionalဖြစ်နေမှာပါ။ parameter nameနောက်မှာ `?` ထည့်ပေးပြီး optional parameterအဖြစ် သတ်မှတ်ရပါတယ်။ optional parameterသုံးပြီဆိုရင် သူ့ကို default valueပေးကို ပေးရပါတယ်။
 
     Route::get('user/{name?}', function ($name = null) {
         return $name;
